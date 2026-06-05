@@ -146,7 +146,3 @@ ls ~/.claude/skills/gppt/SKILL.md   # 能列出就成功了
 能。全部是原生 PowerPoint 对象（文字、形状、图表），可在 PowerPoint / WPS / Keynote 里直接编辑。
 
 ---
-
-## 八、许可
-
-按你的需要补充（如 MIT）。本技能依赖 Claude 自带的 `pptx`、`file-reading` 等能力完成渲染。
