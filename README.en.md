@@ -182,8 +182,3 @@ Yes — native PowerPoint objects (text, shapes, charts), editable in
 PowerPoint / WPS / Keynote.
 
 ---
-
-## 8. License
-
-MIT — see [LICENSE](./LICENSE). Rendering relies on Claude's built-in `pptx` and
-`file-reading` capabilities.
