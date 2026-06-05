@@ -1,4 +1,4 @@
-# 你的GitHub用户名's ppt (`/gppt`)
+# gwn's ppt (`/gppt`)
 
 *[中文说明](./README.md) · English*
 
