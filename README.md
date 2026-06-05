@@ -1,5 +1,7 @@
 # gwn's ppt（`/gppt`）
 
+*中文*
+
 一个 Claude 技能（Skill）：把一个文件夹里的**需求说明 + 资料 + 你自己的模板**，一键变成**可二次编辑**的 PowerPoint。你只管丢资料、写一句需求，剩下的（搭大纲、套模板、按需联网、出片）交给它。
 
 ---
@@ -21,7 +23,8 @@
 ```
 gppt/
 ├── SKILL.md                       # 技能主文件（Claude 据此工作）
-├── README.md                      # 本说明
+├── README.md                      # 本说明（中文）
+├── LICENSE                        # MIT 协议
 ├── references/
 │   ├── brief-guide.md             # 需求文件能写哪些内容、如何解读
 │   ├── roles.md                   # 8 种制作角色的定义
@@ -42,7 +45,7 @@ Claude Code 通过读取 `~/.claude/skills/<名字>/SKILL.md` 来发现技能。
 **用 git 安装（最简单）：**
 
 ```bash
-git clone https://github.com/<你的用户名>/gppt.git ~/.claude/skills/gppt
+git clone https://github.com/gaiwanniao/gppt.git ~/.claude/skills/gppt
 ```
 
 **或手动放置**：把本仓库内容复制到 `~/.claude/skills/gppt/`，确保存在 `~/.claude/skills/gppt/SKILL.md`。
@@ -68,7 +71,7 @@ ls ~/.claude/skills/gppt/SKILL.md   # 能列出就成功了
 
 网页端是「上传安装」，要的是 `.skill` 压缩包：
 
-1. 从本仓库下载 `gppt.skill`（或 `git clone` 后用下方命令自行打包）。
+1. 从本仓库的 Releases 下载 `gppt.skill`（或 `git clone` 后用下方命令自行打包）。
 2. 打开 Claude → Settings → Capabilities / Skills → 上传 `gppt.skill`。
 
 > 自行打包命令（在仓库上一级目录执行）：把 `gppt` 整个文件夹压缩成 zip，并改名为 `gppt.skill` 即可。
@@ -79,13 +82,28 @@ ls ~/.claude/skills/gppt/SKILL.md   # 能列出就成功了
 
 ### 1. 准备一个文件夹，放进这些东西
 
-| 放什么 | 作用 | 说明 |
-|--------|------|------|
-| 一个需求文件（如 `需求.md`） | **指挥棒** | 文件名含「需求 / 要求 / 说明 / 大纲 / brief / requirements」会被自动识别 |
-| 一个 `.pptx` 模板 | 品牌底稿 | 文件名含「template / 模板 / brand / 母版」会被优先认作模板；不放则按角色从零设计 |
-| `.docx / .pdf / .md / .txt` | 正文素材 | 实际内容来源 |
-| `.csv / .xlsx` | 图表数据 | 会被画成可编辑图表 |
-| 图片（png/jpg…） | 配图、Logo | 按需求放到对应页 |
+技能本身装好后，**你每次只需要准备「一个文件夹 + 里面的输入材料」**：
+
+| 准备什么 | 必需? | 作用 | 命名 / 格式提示 |
+|---|---|---|---|
+| **需求文件**（如 `需求.md`） | 强烈建议 | 指挥棒：写清你要什么——受众、页数、重点、跳过什么、**角色**、**用哪个模板**、**要不要联网** | 文件名含「需求 / 要求 / 说明 / 大纲 / brief / requirements」，`.md` 或 `.txt` |
+| **内容素材** | 需要 | 实际正文来源 | `.docx / .pdf / .md / .txt` |
+| **模板** | 可选 | 品牌底稿，保留母版 / 配色 / 字体 | 一个 `.pptx`，名字含「template / 模板 / brand / 母版」会被优先识别；**不放则按角色从零设计** |
+| **图表数据** | 可选 | 会被画成可编辑图表 | `.csv / .xlsx` |
+| **图片** | 可选 | 配图、Logo | png / jpg 等 |
+
+> **最低限度**：只要有一个需求文件（或一份内容素材）就能跑；模板、数据、图片都可以没有。
+
+典型文件夹长这样：
+
+```
+my-deck/
+├── 需求.md            ← 你写的要求（含角色、模板名、是否联网）
+├── 业务说明.docx       ← 正文素材
+├── 季度数据.xlsx       ← 可选，做图表
+├── hero.png           ← 可选，配图
+└── brand.pptx         ← 可选，你的模板
+```
 
 ### 2. 写需求文件（自由发挥，无需固定格式）
 
@@ -146,3 +164,7 @@ ls ~/.claude/skills/gppt/SKILL.md   # 能列出就成功了
 能。全部是原生 PowerPoint 对象（文字、形状、图表），可在 PowerPoint / WPS / Keynote 里直接编辑。
 
 ---
+
+## 八、许可
+
+MIT 协议，见 [LICENSE](./LICENSE)。本技能依赖 Claude 自带的 `pptx`、`file-reading` 等能力完成渲染。
