@@ -16,8 +16,23 @@ an editable deck in one shot.
 - 在 Claude Code 中用 `/gppt` 调用，或自然描述自动触发。
   Invoke with `/gppt`, or trigger by describing the task.
 
+## 🗂 使用前准备 / Before you start
+在一个文件夹里放好这些，然后调用 `/gppt`：
+Put these in one folder, then run `/gppt`:
+- **需求文件**（必备）：一句话描述你要的 PPT——受众、页数、重点、角色、用哪个模板、要不要联网。
+  A brief (required): describe the deck — audience, slides, focus, role, which template, whether to research.
+- **内容素材**（必备）：`.docx / .pdf / .md / .txt`。
+  Source content (required).
+- **模板**（可选）：一个 `.pptx`；不放则按角色从零设计。
+  Template (optional): a `.pptx`; omit to design from scratch by role.
+- **数据 / 图片**（可选）：`.csv / .xlsx`、png/jpg。
+  Data / images (optional).
+
+> 最低限度：有需求文件或一份素材即可跑。详见 README。
+> Minimum: a brief or one source file is enough. See the README.
+
 ## 📦 安装 / Install
-- **Claude Code**：`git clone https://github.com/<your-username>/gppt.git ~/.claude/skills/gppt`，重启 `claude` 后输入 `/gppt`。
+- **Claude Code**：`git clone https://github.com/gaiwanniao/gppt.git ~/.claude/skills/gppt`，重启 `claude` 后输入 `/gppt`。
 - **claude.ai / 桌面端**：下载本 Release 附带的 `gppt.skill`，在 Settings → Capabilities/Skills 上传。
 
 ## ⚠️ 注意 / Notes
